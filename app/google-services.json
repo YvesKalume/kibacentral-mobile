@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "360280327246",
+    "firebase_url": "https://kibacentral.firebaseio.com",
+    "project_id": "kibacentral",
+    "storage_bucket": "kibacentral.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360280327246:android:53b986159d3297b5432f1f",
+        "android_client_info": {
+          "package_name": "com.yveskalumenoble.kibacentral"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "360280327246-l8irbo2a598qg0l7c6kae7sto8os6cl5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8ldbrjj-GOpCALT3gxq9Y5uXzCR-RVLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "360280327246-l8irbo2a598qg0l7c6kae7sto8os6cl5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
