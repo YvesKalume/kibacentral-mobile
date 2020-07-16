@@ -18,7 +18,7 @@ class ScheduledEventViewModel : ViewModel() {
     }
 
     fun getScheduledEvents() {
-        firestore.collection("events")
+        firestore.collection("scheduled_events")
             .orderBy("datetime",Query.Direction.ASCENDING)
             .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 if (querySnapshot == null || firebaseFirestoreException != null){

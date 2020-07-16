@@ -13,15 +13,12 @@ class EventViewModel : ViewModel() {
     val events: LiveData<List<Event>>
         get() = _events
 
-    private val _scheduledEvents = MutableLiveData<List<Event>> ()
-    val scheduledEvents: LiveData<List<Event>>
-        get() = _scheduledEvents
-
     init {
         getData()
     }
 
     fun getData() {
+
         firestore.collection("events")
             .orderBy("datetime",Query.Direction.ASCENDING)
             .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
@@ -45,10 +42,6 @@ class EventViewModel : ViewModel() {
                     return@filter currentTime <= eventTime
 
                 }*/
-
-                _scheduledEvents.value = events.filter {
-                    return@filter it.isScheduled
-                }
             }
     }
 }

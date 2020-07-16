@@ -24,7 +24,7 @@ import com.yveskalumenoble.kibacentral.viewmodel.ScheduledEventViewModel
  */
 class EventsScheduledFragment : Fragment(), OnItemClickListener {
 
-    private lateinit var viewModel : EventViewModel
+    private lateinit var viewModel : ScheduledEventViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,10 +34,10 @@ class EventsScheduledFragment : Fragment(), OnItemClickListener {
         val binding : FragmentEventsScheduledBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_events_scheduled,
             container,false)
 
-        viewModel = ViewModelProviders.of(this).get(EventViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(ScheduledEventViewModel::class.java)
         val mAdapter = ScheduledEventAdapter(this)
 
-        viewModel.scheduledEvents.observe(viewLifecycleOwner, Observer {
+        viewModel.events.observe(viewLifecycleOwner, Observer {
             it?.let {
                 mAdapter.submitList(it)
             }
