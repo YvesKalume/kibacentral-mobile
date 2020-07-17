@@ -29,7 +29,7 @@ class EventViewModel : ViewModel() {
 
                 querySnapshot.forEach {
                     val event= it.toObject(Event::class.java)
-                    event.id = it.id
+                    event.uid = it.id
                     event.isScheduled
                     events.add(event)
                 }

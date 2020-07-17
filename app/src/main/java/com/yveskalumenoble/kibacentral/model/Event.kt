@@ -10,7 +10,7 @@ import java.util.*
 class Event (
 
     //@PrimaryKey
-    var id: String= "",
+    var uid: String= "",
 
     //@ColumnInfo(name = "title")
     var title: String = "",

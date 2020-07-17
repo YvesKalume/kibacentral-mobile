@@ -32,7 +32,7 @@ class ScheduledEventAdapter(val itemClickListener: OnItemClickListener) : ListAd
         }
 
         override fun areContentsTheSame(oldItem: Event, newItem: Event): Boolean {
-            return newItem.id == oldItem.id
+            return newItem.uid == oldItem.uid
         }
 
     }

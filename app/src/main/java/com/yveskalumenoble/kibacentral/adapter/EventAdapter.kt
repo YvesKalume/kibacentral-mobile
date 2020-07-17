@@ -35,7 +35,7 @@ class EventAdapter(val itemClickListener: OnItemClickListener) : ListAdapter<Eve
         }
 
         override fun areContentsTheSame(oldItem: Event, newItem: Event): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.uid == newItem.uid
         }
     }
 

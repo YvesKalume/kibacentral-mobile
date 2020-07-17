@@ -2,9 +2,11 @@ package com.yveskalumenoble.kibacentral.view.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.yveskalumenoble.kibacentral.R
 import com.yveskalumenoble.kibacentral.databinding.ActivitySettingBinding
+import com.yveskalumenoble.kibacentral.util.CONSTANT
 
 class SettingActivity : AppCompatActivity() {
 
@@ -18,6 +20,29 @@ class SettingActivity : AppCompatActivity() {
         val actionbar = supportActionBar
         actionbar!!.title = "Paramètres"
         actionbar.setDisplayHomeAsUpEnabled(true)
+
+        val sharedRef = getSharedPreferences(CONSTANT.noficationPrefrence,0)
+
+        if (sharedRef.getBoolean(CONSTANT.noficationPrefrence,true)){
+            binding.notificationSwitch.isChecked = true
+        }
+
+        binding.notificationSwitch.setOnClickListener {
+            if (binding.notificationSwitch.isChecked){
+                val editor = sharedRef.edit()
+                editor.putBoolean(CONSTANT.noficationPrefrence,true)
+                editor.apply()
+                Toast.makeText(applicationContext,"Vos recevrez les notification pour cles evenemnt planifier",Toast.LENGTH_LONG)
+                    .show()
+            } else {
+
+                val editor = sharedRef.edit()
+                editor.putBoolean(CONSTANT.noficationPrefrence,false)
+                editor.apply()
+
+                Toast.makeText(this,"Désactivé",Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {

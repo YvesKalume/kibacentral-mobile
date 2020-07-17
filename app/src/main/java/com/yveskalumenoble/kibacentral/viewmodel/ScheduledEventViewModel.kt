@@ -28,10 +28,15 @@ class ScheduledEventViewModel : ViewModel() {
 
                 querySnapshot.forEach {
                     val event= it.toObject(Event::class.java)
-                    event.id = it.id
+                    event.uid = it.id
                     events.add(event)
                 }
                 _events.value = events
             }
+    }
+
+    fun deleteScheduledEvents(event: Event){
+        firestore.collection("scheduled_events")
+            .document(event.uid).delete()
     }
 }
