@@ -11,22 +11,20 @@ import com.yveskalumenoble.kibacentral.util.CONSTANT
 class EventViewModel : ViewModel() {
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
+
     fun getEvents() : LiveData<List<Event>> {
         val events = MutableLiveData<List<Event>>()
 
-        firestore.collection("events")
+        firestore.collection(CONSTANT.events)
             .orderBy("datetime",Query.Direction.ASCENDING)
             .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 if (querySnapshot == null || firebaseFirestoreException != null){
                     return@addSnapshotListener
                 }
-                val eventsList = mutableListOf<Event>()
 
-                querySnapshot.forEach {
-                    val event= it.toObject(Event::class.java)
-                    eventsList.add(event)
-                }
-                events.value = eventsList
+
+                events.value = querySnapshot.toObjects(Event::class.java)
+
                 /*.filter {
 
                     val currentTime = System.currentTimeMillis()
@@ -37,5 +35,22 @@ class EventViewModel : ViewModel() {
                 }*/
             }
         return events
+    }
+
+
+
+    fun isScheduled(event: Event) : LiveData<Boolean> {
+        val isScheduled = MutableLiveData<Boolean>()
+        firestore.collection(CONSTANT.scheduledEvents)
+            .document("yveskalumenoble@gmail.com")
+            .collection(CONSTANT.events)
+            .whereArrayContains("uid", event.uid)
+            .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            if (querySnapshot == null || firebaseFirestoreException != null){
+                return@addSnapshotListener
+            }
+                isScheduled.value = !querySnapshot.isEmpty
+        }
+        return isScheduled
     }
 }

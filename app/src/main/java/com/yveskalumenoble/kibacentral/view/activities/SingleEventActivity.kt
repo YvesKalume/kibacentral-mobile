@@ -3,6 +3,7 @@ package com.yveskalumenoble.kibacentral.view.activities
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
@@ -26,6 +27,7 @@ class SingleEventActivity : AppCompatActivity() {
             scheduleEvent(event!!)
         }
         binding.event = event
+        Log.d("SingleEventActivity","le doc est ${event?.uid}")
     }
 
     fun scheduleEvent(event: Event){
