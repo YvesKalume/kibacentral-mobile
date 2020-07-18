@@ -1,6 +1,7 @@
 package com.yveskalumenoble.kibacentral.model
 
 import android.os.Parcelable
+import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.ServerTimestamp
 import kotlinx.android.parcel.Parcelize
 import java.util.*
@@ -9,7 +10,7 @@ import java.util.*
 @Parcelize
 class Event (
 
-    //@PrimaryKey
+    @DocumentId
     var uid: String= "",
 
     //@ColumnInfo(name = "title")
