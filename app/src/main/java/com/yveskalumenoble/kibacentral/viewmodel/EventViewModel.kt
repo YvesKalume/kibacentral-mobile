@@ -6,18 +6,13 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.yveskalumenoble.kibacentral.model.Event
+import com.yveskalumenoble.kibacentral.util.CONSTANT
 
 class EventViewModel : ViewModel() {
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private val _events = MutableLiveData<List<Event>>()
-    val events: LiveData<List<Event>>
-        get() = _events
 
-    init {
-        getData()
-    }
-
-    fun getData() {
+    fun getEvents() : LiveData<List<Event>> {
+        val events = MutableLiveData<List<Event>>()
 
         firestore.collection("events")
             .orderBy("datetime",Query.Direction.ASCENDING)
@@ -25,15 +20,15 @@ class EventViewModel : ViewModel() {
                 if (querySnapshot == null || firebaseFirestoreException != null){
                     return@addSnapshotListener
                 }
-                val events = mutableListOf<Event>()
+                val eventsList = mutableListOf<Event>()
 
                 querySnapshot.forEach {
                     val event= it.toObject(Event::class.java)
                     event.uid = it.id
                     event.isScheduled
-                    events.add(event)
+                    eventsList.add(event)
                 }
-                _events.value = events
+                events.value = eventsList
                 /*.filter {
 
                     val currentTime = System.currentTimeMillis()
@@ -43,5 +38,6 @@ class EventViewModel : ViewModel() {
 
                 }*/
             }
+        return events
     }
 }

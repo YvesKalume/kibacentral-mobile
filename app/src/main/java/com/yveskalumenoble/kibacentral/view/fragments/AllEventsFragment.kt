@@ -36,7 +36,7 @@ class AllEventsFragment : Fragment(), OnItemClickListener {
         eventViewModel = ViewModelProviders.of(this).get(EventViewModel::class.java)
         val mAdapter = EventAdapter(this)
 
-        eventViewModel.events.observe(viewLifecycleOwner, Observer {
+        eventViewModel.getEvents().observe(viewLifecycleOwner, Observer {
             it?.let {
                 mAdapter.submitList(it)
             }
