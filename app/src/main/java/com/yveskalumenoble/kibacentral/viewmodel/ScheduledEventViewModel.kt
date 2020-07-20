@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.yveskalumenoble.kibacentral.model.Event
+import com.yveskalumenoble.kibacentral.util.CONSTANT
 
 class ScheduledEventViewModel : ViewModel() {
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -18,7 +19,9 @@ class ScheduledEventViewModel : ViewModel() {
     }
 
     fun getScheduledEvents() {
-        firestore.collection("scheduled_events")
+        firestore.collection(CONSTANT.scheduledEvents)
+            .document("yveskalumenoble@gmail.com")
+            .collection(CONSTANT.events)
             .orderBy("datetime",Query.Direction.ASCENDING)
             .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 if (querySnapshot == null || firebaseFirestoreException != null){
@@ -26,17 +29,28 @@ class ScheduledEventViewModel : ViewModel() {
                 }
                 val events = mutableListOf<Event>()
 
-                querySnapshot.forEach {
-                    val event= it.toObject(Event::class.java)
-                    event.uid = it.id
-                    events.add(event)
-                }
-                _events.value = events
+                _events.value = querySnapshot.toObjects(Event::class.java)
             }
     }
 
+
     fun deleteScheduledEvents(event: Event){
-        firestore.collection("scheduled_events")
-            .document(event.uid).delete()
+        firestore.collection(CONSTANT.scheduledEvents)
+            .document("yvekalumenoble@gmail.com")
+            .collection(CONSTANT.events)
+            .document(event.uid)
+            .delete()
+
+        firestore.collection(CONSTANT.userEvent)
+            .whereEqualTo("userUid","yveskalumenoble@gmail.com")
+            .whereEqualTo("scheduledDocId",event.uid)
+            .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+                if (querySnapshot == null || firebaseFirestoreException != null){
+                    return@addSnapshotListener
+                }
+                querySnapshot.documents.forEach {
+                    it.reference.delete()
+                }
+            }
     }
 }

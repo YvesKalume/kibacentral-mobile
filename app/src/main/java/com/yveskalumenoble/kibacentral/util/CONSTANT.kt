@@ -1,7 +1,8 @@
 package com.yveskalumenoble.kibacentral.util
 
 object CONSTANT {
-    val events = "events"
-    val scheduledEvents = "scheduled_events"
-    val noficationPrefrence = "notification"
+    const val events = "events"
+    const val scheduledEvents = "scheduled_events"
+    const val noficationPrefrence = "notification"
+    const val userEvent = "user_event"
 }

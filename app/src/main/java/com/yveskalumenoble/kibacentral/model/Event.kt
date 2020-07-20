@@ -6,7 +6,7 @@ import com.google.firebase.firestore.ServerTimestamp
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
-/*@Entity(tableName = "event_table")*/
+
 @Parcelize
 class Event (
 
@@ -24,7 +24,5 @@ class Event (
     var lieu: String = "",
 
 
-    var imageUri: String? = "",
-
-    var isScheduled : Boolean = false
+    var imageUri: String? = ""
 ): Parcelable
