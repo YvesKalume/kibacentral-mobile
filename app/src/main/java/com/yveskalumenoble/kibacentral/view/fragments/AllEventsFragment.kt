@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.yveskalumenoble.kibacentral.R
 import com.yveskalumenoble.kibacentral.adapter.EventAdapter
 import com.yveskalumenoble.kibacentral.databinding.FragmentAllEventsBinding
+import com.yveskalumenoble.kibacentral.model.Blog
 import com.yveskalumenoble.kibacentral.model.Event
 import com.yveskalumenoble.kibacentral.util.OnItemClickListener
 import com.yveskalumenoble.kibacentral.view.activities.SingleEventActivity
@@ -53,5 +54,9 @@ class AllEventsFragment : Fragment(), OnItemClickListener {
         val intent = Intent(activity!!.baseContext,SingleEventActivity::class.java)
         intent.putExtra("event",event)
         startActivity(intent)
+    }
+
+    override fun onBlogItemClik(blog: Blog) {
+
     }
 }

@@ -27,8 +27,6 @@ class ScheduledEventViewModel : ViewModel() {
                 if (querySnapshot == null || firebaseFirestoreException != null){
                     return@addSnapshotListener
                 }
-                val events = mutableListOf<Event>()
-
                 _events.value = querySnapshot.toObjects(Event::class.java)
             }
     }

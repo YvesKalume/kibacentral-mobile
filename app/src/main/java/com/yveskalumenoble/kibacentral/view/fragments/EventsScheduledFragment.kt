@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.yveskalumenoble.kibacentral.R
 import com.yveskalumenoble.kibacentral.adapter.ScheduledEventAdapter
 import com.yveskalumenoble.kibacentral.databinding.FragmentEventsScheduledBinding
+import com.yveskalumenoble.kibacentral.model.Blog
 import com.yveskalumenoble.kibacentral.model.Event
 import com.yveskalumenoble.kibacentral.util.OnItemClickListener
 import com.yveskalumenoble.kibacentral.viewmodel.EventViewModel
@@ -36,6 +37,7 @@ class EventsScheduledFragment : Fragment(), OnItemClickListener {
             container,false)
 
         viewModel = ViewModelProviders.of(this).get(ScheduledEventViewModel::class.java)
+
         val mAdapter = ScheduledEventAdapter(this)
 
         viewModel.events.observe(viewLifecycleOwner, Observer {
@@ -50,6 +52,10 @@ class EventsScheduledFragment : Fragment(), OnItemClickListener {
         }
 
         return binding.root
+    }
+
+    override fun onBlogItemClik(blog: Blog) {
+
     }
 
     override fun onItemClick(event: Event) {

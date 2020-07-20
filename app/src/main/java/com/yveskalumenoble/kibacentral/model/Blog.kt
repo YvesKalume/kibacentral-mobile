@@ -6,24 +6,19 @@ import com.google.firebase.firestore.ServerTimestamp
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
-
 @Parcelize
-class Event (
+data class Blog(
 
     @DocumentId
-    var uid: String= "",
+    var uid: String? = null,
 
-    var title: String = "",
+    var title: String? = null,
 
-    var description: String ="",
+    var imageUri: String? = null,
 
+    var content: String? = null,
 
-    @field:ServerTimestamp 
-    var datetime: Date? = null,
+    @field:ServerTimestamp
+    var datetime: Date? = null
 
-
-    var lieu: String = "",
-
-
-    var imageUri: String? = ""
 ): Parcelable

@@ -1,5 +1,6 @@
 package com.yveskalumenoble.kibacentral.util
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -18,15 +19,15 @@ fun TextView.setEventLieu(item: Event?){
     text = item?.lieu
 }
 
-@BindingAdapter("eventDateTime")
-fun TextView.setEventDateTime(eventDate: Date){
+@BindingAdapter("humanDate")
+fun TextView.sethumanDate(eventDate: Date){
     val date = SimpleDateFormat("dd/MM/yyyy",Locale.FRANCE).format(eventDate)
     val time = SimpleDateFormat("HH:mm", Locale.FRANCE).format(eventDate)
     val day = SimpleDateFormat("EEEE", Locale.FRANCE).format(eventDate)
     text = "$day, le $date à $time"
 }
 
-@BindingAdapter("eventDate")
+@BindingAdapter("dateFormat")
 fun TextView.setEventDate(eventDate: Date){
     val day = SimpleDateFormat("EEEE", Locale.FRANCE).format(eventDate)
     val date = SimpleDateFormat("dd/MM/yyyy",Locale.FRANCE).format(eventDate)
@@ -39,15 +40,15 @@ fun TextView.setDayOfMonth(eventDate : Date){
 }
 
 @BindingAdapter("dayOfWeek")
-fun TextView.setDayOfWeek(eventDate: Date){
+fun TextView.setDayOfWeek(date: Date){
 
-    val day = SimpleDateFormat("EEEE", Locale.FRANCE).format(eventDate)
+    val day = SimpleDateFormat("EEEE", Locale.FRANCE).format(date)
     text = day
 }
 
-@BindingAdapter("eventTime")
-fun TextView.setTime(eventDate: Date){
-    val time = SimpleDateFormat("HH:mm", Locale.FRANCE).format(eventDate)
+@BindingAdapter("timeFormat")
+fun TextView.setTime(date: Date){
+    val time = SimpleDateFormat("HH:mm", Locale.FRANCE).format(date)
     text = "à $time"
 }
 
@@ -56,7 +57,13 @@ fun TextView.setEventDescription(item: Event?){
     text = item?.description
 }
 
-@BindingAdapter("eventImage")
-fun bindEventImage(imageView: ImageView, item: Event?){
-    Glide.with(imageView.context).load(item?.imageUri).into(imageView)
+@BindingAdapter("bindImage")
+fun bindEventImage(imageView: ImageView, imageUri: String){
+    Glide.with(imageView.context).load(imageUri).into(imageView)
 }
+
+/*
+@BindingAdapter("bindBackgrounImage")
+fun bindBackgrounImage(view: View,imageUri: String){
+    Glide.with(view.context).load(imageUri)
+}*/

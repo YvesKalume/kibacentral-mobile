@@ -6,9 +6,9 @@
         android:icon="@drawable/ic_event"
         android:title="Evenements" />
     <item
-        android:id="@+id/eventsScheduledFragment"
-        android:icon="@drawable/ic_scheduled"
-        android:title="Planifiés"
+        android:id="@+id/blogFragment"
+        android:icon="@drawable/ic_blog"
+        android:title="Blog"
         />
     <item
         android:id="@+id/aboutFragment"

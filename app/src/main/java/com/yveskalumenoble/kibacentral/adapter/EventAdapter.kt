@@ -10,7 +10,7 @@ import com.yveskalumenoble.kibacentral.databinding.EventItemBinding
 import com.yveskalumenoble.kibacentral.model.Event
 import com.yveskalumenoble.kibacentral.util.OnItemClickListener
 
-class EventAdapter(val itemClickListener: OnItemClickListener) : ListAdapter<Event,EventAdapter.EventViewHolder>(Companion){
+class EventAdapter(private val itemClickListener: OnItemClickListener) : ListAdapter<Event,EventAdapter.EventViewHolder>(Companion){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)

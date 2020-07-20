@@ -19,4 +19,8 @@
         android:id="@+id/eventsScheduledFragment"
         android:name="com.yveskalumenoble.kibacentral.view.fragments.EventsScheduledFragment"
         android:label="EventsScheduledFragment" />
+    <fragment
+        android:id="@+id/blogFragment"
+        android:name="com.yveskalumenoble.kibacentral.view.fragments.BlogFragment"
+        android:label="BlogFragment" />
 </navigation>
