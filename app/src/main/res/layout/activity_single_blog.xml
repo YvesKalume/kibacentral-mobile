@@ -22,7 +22,6 @@
                 app:layout_scrollFlags="exitUntilCollapsed|scroll"
                 app:contentScrim="@color/colorPrimary"
                 app:title="@{blog.title}"
-                android:background="@drawable/image1"
                 app:expandedTitleMarginStart="8dp"
                 app:expandedTitleMarginEnd="8dp">
                 <androidx.appcompat.widget.Toolbar
@@ -31,6 +30,14 @@
                     app:layout_collapseMode="pin"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/image1"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax"
+                    app:bindImage="@{blog.imageUri}"
+                    />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
         <androidx.core.widget.NestedScrollView
