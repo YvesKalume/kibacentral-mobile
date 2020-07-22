@@ -102,13 +102,13 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/creditTitle"
+                    android:id="@+id/contactTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
-                    android:text="Crédit"
+                    android:text="Contacts"
                     android:textStyle="bold"
                     android:textColor="#000"
                     android:textSize="20sp"
@@ -117,17 +117,17 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/kipushix"
+                    android:id="@+id/contact1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:text="KipushiX"
+                    android:text="+243 97 49 39 405"
                     android:textColor="#000"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/creditTitle" />
+                    app:layout_constraintTop_toBottomOf="@id/contactTitle" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

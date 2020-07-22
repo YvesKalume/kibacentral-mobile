@@ -9,17 +9,18 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activities.SingleBlogActivity"></activity>
-        <activity android:name=".view.activities.LoginActivity" />
-        <activity android:name=".view.activities.SingleEventActivity" />
-        <activity android:name=".view.activities.SettingActivity" />
-        <activity android:name=".view.activities.MainActivity">
+        <activity android:name=".view.activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.activities.SingleBlogActivity" />
+        <activity android:name=".view.activities.LoginActivity" />
+        <activity android:name=".view.activities.SingleEventActivity" />
+        <activity android:name=".view.activities.SettingActivity" />
+        <activity android:name=".view.activities.MainActivity"/>
     </application>
 
 </manifest>
