@@ -60,8 +60,6 @@ class EventsScheduledFragment : Fragment(), OnItemClickListener {
 
     override fun onItemClick(event: Event) {
         Toast.makeText(this.context,event.title,Toast.LENGTH_SHORT).show()
-        viewModel.deleteScheduledEvents(event)
-        Log.d("SingleEventActivity","valeur est ${event.uid} ")
     }
 
 }
