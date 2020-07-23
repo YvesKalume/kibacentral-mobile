@@ -46,8 +46,6 @@ class EventViewModel : ViewModel() {
 
 
     fun scheduleEvent(event: Event){
-        val firestore= FirebaseFirestore.getInstance()
-
         val userEvent = UserEvent(auth.currentUser?.uid,event.uid,event.datetime)
         firestore.collection(CONSTANT.userEvent)
             .add(userEvent)
@@ -60,7 +58,6 @@ class EventViewModel : ViewModel() {
     }
 
     fun isScheduled(event: Event) : LiveData<Boolean> {
-        val firestore= FirebaseFirestore.getInstance()
         val isScheduled = MutableLiveData<Boolean>()
 
         firestore.collection(CONSTANT.userEvent)
@@ -80,5 +77,17 @@ class EventViewModel : ViewModel() {
 
     fun removeScheduledEvent(event: Event) {
 
+        firestore.collection(CONSTANT.userEvent)
+            .whereEqualTo("userUid", auth.currentUser?.uid)
+            .whereEqualTo("eventUid",event.uid)
+            .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+                if (querySnapshot == null || firebaseFirestoreException != null){
+                    return@addSnapshotListener
+                }
+
+                querySnapshot.documents.forEach {
+                    it.reference.delete()
+                }
+            }
     }
 }

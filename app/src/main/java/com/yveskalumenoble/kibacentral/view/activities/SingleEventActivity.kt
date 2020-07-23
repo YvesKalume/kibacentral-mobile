@@ -39,6 +39,9 @@ class SingleEventActivity : AppCompatActivity() {
                 binding.scheduleBtn.apply {
                     text = "Deja Planifié"
                     setBackgroundResource(R.drawable.disabled_btn_background)
+                    setOnClickListener {
+                        eventViewModel.removeScheduledEvent(event)
+                    }
                 }
             }
             else {
