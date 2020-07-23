@@ -45,7 +45,7 @@ class EventViewModel : ViewModel() {
 
 
 
-    private fun scheduleEvent(event: Event){
+    fun scheduleEvent(event: Event){
         val firestore= FirebaseFirestore.getInstance()
 
         val userEvent = UserEvent(auth.currentUser?.uid,event.uid,event.datetime)

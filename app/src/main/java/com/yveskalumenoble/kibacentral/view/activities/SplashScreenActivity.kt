@@ -1,10 +1,12 @@
 package com.yveskalumenoble.kibacentral.view.activities
 
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import com.yveskalumenoble.kibacentral.databinding.ActivitySplashScreenBinding
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.auth.FirebaseAuth
@@ -15,23 +17,33 @@ class SplashScreenActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivitySplashScreenBinding.inflate(layoutInflater) }
 
-    val firebaseAuth = FirebaseAuth.getInstance()
+    private val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        if(firebaseAuth.currentUser != null){
+            Timer().schedule(1500){
+                val intent = Intent(applicationContext,MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+
         firebaseAuth.signInAnonymously()
             .addOnCompleteListener(this) {
                 if (it.isSuccessful){
-
-                    Timer().schedule(2000){
+                    Timer().schedule(1500){
                         val intent = Intent(applicationContext,MainActivity::class.java)
                         startActivity(intent)
                         finish()
                     }
 
-                }else {
+                }
+
+                else {
                     val builder = AlertDialog.Builder(this)
                     builder.setTitle("Erreur d'auhentification")
                     builder.setMessage("Une erreur est survenue lors de l'authentification. " +
@@ -44,7 +56,6 @@ class SplashScreenActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext,"Quitter",Toast.LENGTH_SHORT).show()
                     })
                     builder.show()
-
                 }
             }
     }
