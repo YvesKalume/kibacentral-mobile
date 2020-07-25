@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
@@ -41,10 +42,24 @@ class BlogFragment : Fragment(),OnItemClickListener {
             adapter.submitList(it)
         })
 
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                blogViewModel.searchBlog(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                blogViewModel.searchBlog(newText)
+                return true
+            }
+
+        })
+
         binding.blogRecyclerView.adapter = adapter
 
         return binding.root
     }
+
 
     override fun onBlogItemClik(blog: Blog) {
         val intent = Intent(context,SingleBlogActivity::class.java)

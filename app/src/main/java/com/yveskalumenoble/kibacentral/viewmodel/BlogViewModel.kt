@@ -29,4 +29,11 @@ class BlogViewModel : ViewModel() {
                 _blogs.value = querySnapshot.toObjects(Blog::class.java)
             }
     }
+
+    fun searchBlog(text: String?) {
+        _blogs.value?.filter {
+            val title = it.title
+            return@filter title == text
+        }
+    }
 }
