@@ -55,6 +55,7 @@ class BlogFragment : Fragment(),OnItemClickListener {
 
         })
 
+
         binding.blogRecyclerView.adapter = adapter
 
         return binding.root

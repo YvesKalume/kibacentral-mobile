@@ -40,7 +40,7 @@ class SettingActivity : AppCompatActivity() {
                 editor.putBoolean(CONSTANT.noficationPrefrence,false)
                 editor.apply()
 
-                Toast.makeText(this,"Désactivé",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"Notifications Désactivées",Toast.LENGTH_SHORT).show()
             }
         }
     }

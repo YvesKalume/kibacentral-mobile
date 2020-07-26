@@ -21,6 +21,8 @@
         <activity android:name=".view.activities.SingleEventActivity" />
         <activity android:name=".view.activities.SettingActivity" />
         <activity android:name=".view.activities.MainActivity"/>
+
+        <receiver android:name=".receiver.EventReceiver"/>
     </application>
 
 </manifest>

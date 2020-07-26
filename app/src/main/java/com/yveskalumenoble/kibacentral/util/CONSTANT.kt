@@ -6,4 +6,5 @@ object CONSTANT {
     const val scheduledEvents = "scheduled_events"
     const val noficationPrefrence = "notification"
     const val userEvent = "user_event"
+    const val notificationChanelId = "kibacentral"
 }

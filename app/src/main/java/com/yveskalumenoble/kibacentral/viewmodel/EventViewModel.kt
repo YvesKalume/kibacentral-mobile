@@ -1,7 +1,12 @@
 package com.yveskalumenoble.kibacentral.viewmodel
 
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,12 +15,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.yveskalumenoble.kibacentral.model.Event
 import com.yveskalumenoble.kibacentral.model.UserEvent
+import com.yveskalumenoble.kibacentral.receiver.EventReceiver
 import com.yveskalumenoble.kibacentral.util.CONSTANT
 
 class EventViewModel : ViewModel() {
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
     private val auth = FirebaseAuth.getInstance()
-
 
     fun getEvents() : LiveData<List<Event>> {
 
@@ -41,6 +46,7 @@ class EventViewModel : ViewModel() {
             }
         return events
     }
+
 
 
 
