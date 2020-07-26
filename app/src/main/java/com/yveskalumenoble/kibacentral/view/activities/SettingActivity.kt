@@ -23,8 +23,8 @@ class SettingActivity : AppCompatActivity() {
 
         val sharedRef = getSharedPreferences(CONSTANT.noficationPrefrence,0)
 
-        if (sharedRef.getBoolean(CONSTANT.noficationPrefrence,true)){
-            binding.notificationSwitch.isChecked = true
+        if (sharedRef.getBoolean(CONSTANT.noficationPrefrence,false)){
+            binding.notificationSwitch.isChecked = false
         }
 
         binding.notificationSwitch.setOnClickListener {

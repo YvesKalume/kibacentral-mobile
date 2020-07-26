@@ -15,16 +15,11 @@ class EventReceiver : BroadcastReceiver(){
         val notificationManager = ContextCompat.getSystemService(context,NotificationManager::class.java)
                 as NotificationManager
 
-        val bundle = intent.extras
-        val event = bundle?.getParcelable<Event>("event")
-        val test = bundle?.getString("yves")
-        Log.d("event intent", "$test")
-
         val preference = context.getSharedPreferences(CONSTANT.noficationPrefrence,Context.MODE_PRIVATE)
-        val canNotify = preference.getBoolean(CONSTANT.noficationPrefrence,true)
+        val canNotify = preference.getBoolean(CONSTANT.noficationPrefrence,false)
 
         if (canNotify){
-            notificationManager.sendNotification("${event?.title} c'est dans moins de 24 heures",context)
+            notificationManager.sendNotification("Certains evenements sont prévus pour aujourd'huis",context)
         }
     }
 
