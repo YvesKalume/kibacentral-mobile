@@ -30,10 +30,9 @@ class BlogViewModel : ViewModel() {
             }
     }
 
-    fun searchBlog(text: String?) {
-        _blogs.value?.filter {
-            val title = it.title
-            return@filter title == text
+    fun searchBlog(text: CharSequence) {
+        _blogs.value = _blogs.value?.filter {
+            it.title!!.contains(text,true)
         }
     }
 }

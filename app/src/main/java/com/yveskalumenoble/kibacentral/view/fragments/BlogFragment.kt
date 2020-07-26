@@ -44,12 +44,13 @@ class BlogFragment : Fragment(),OnItemClickListener {
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                blogViewModel.searchBlog(query)
-                return true
+                if (query != null) {
+                    blogViewModel.searchBlog(query)
+                }
+                return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                blogViewModel.searchBlog(newText)
                 return true
             }
 
