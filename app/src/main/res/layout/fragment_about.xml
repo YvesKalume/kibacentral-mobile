@@ -121,13 +121,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:text="+243 97 49 39 405"
+                    android:text="kibacentral@gmail.com"
                     android:textColor="#000"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/contactTitle" />
+                <TextView
+                    android:id="@+id/contact2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="+243 97 49 39 405"
+                    android:layout_margin="16dp"
+                    android:textColor="#000"
+                    app:layout_constraintTop_toBottomOf="@id/contact1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
