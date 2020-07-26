@@ -16,9 +16,9 @@ fun NotificationManager.sendNotification(messageBody: String, context: Context){
 
     val ringtone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
-    val builder = NotificationCompat.Builder(context,"kibacentral : êtes vous prêts ?")
+    val builder = NotificationCompat.Builder(context,CONSTANT.notificationChanelId)
         .setSmallIcon(R.drawable.logo)
-        .setContentTitle("Kibacentral")
+        .setContentTitle("kibacentral : êtes vous prêts ?")
         .setContentText(messageBody)
         .setSound(ringtone)
         .setContentIntent(pendingIntent)

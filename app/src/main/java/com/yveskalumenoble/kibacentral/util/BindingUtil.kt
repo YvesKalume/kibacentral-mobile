@@ -1,5 +1,6 @@
 package com.yveskalumenoble.kibacentral.util
 
+import android.text.Html
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -60,6 +61,11 @@ fun TextView.setEventDescription(item: Event?){
 @BindingAdapter("bindImage")
 fun bindEventImage(imageView: ImageView, imageUri: String){
     Glide.with(imageView.context).load(imageUri).into(imageView)
+}
+
+@BindingAdapter("fromHtml")
+fun TextView.setTextFromHtml(text: String?){
+    setText(Html.fromHtml(text))
 }
 
 /*

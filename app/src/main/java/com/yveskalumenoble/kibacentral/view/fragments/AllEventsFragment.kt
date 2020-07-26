@@ -60,9 +60,7 @@ class AllEventsFragment : Fragment(), OnItemClickListener {
             }
 
             it.forEach { event ->
-                if (event.datetime != null){
-                    setAlarm(event)
-                }
+               setAlarm(event)
             }
         })
 
@@ -93,12 +91,6 @@ class AllEventsFragment : Fragment(), OnItemClickListener {
         val date = Date(year,month,day,0,0)
 
         alarmManager.set(AlarmManager.RTC_WAKEUP,date.time,pendingIntent)
-    }
-
-    private fun cancelAlarm(){
-        val intent = Intent(context, EventReceiver::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(context,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        alarmManager.cancel(pendingIntent)
     }
 
     private fun createNotificationChannel(){
