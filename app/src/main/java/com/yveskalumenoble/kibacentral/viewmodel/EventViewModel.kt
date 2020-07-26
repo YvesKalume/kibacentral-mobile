@@ -47,6 +47,19 @@ class EventViewModel : ViewModel() {
         return events
     }
 
+    fun getParticipants(event: Event) : LiveData<Int> {
+        val participants = MutableLiveData<Int>()
+        firestore.collection(CONSTANT.userEvent)
+            .whereEqualTo("eventUid",event.uid)
+            .addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+                if (querySnapshot == null || firebaseFirestoreException != null){
+                    return@addSnapshotListener
+                }
+                participants.value = querySnapshot.documents.size
+            }
+        return participants
+    }
+
 
 
 

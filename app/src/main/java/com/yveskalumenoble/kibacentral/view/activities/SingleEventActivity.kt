@@ -48,8 +48,11 @@ class SingleEventActivity : AppCompatActivity() {
 
         eventViewModel.isScheduled(event!!).observe(this, Observer {
             if (it){
+                eventViewModel.getParticipants(event).observe(this, Observer {
+                    binding.scheduleBtn.text = "$it Participants"
+                })
+
                 binding.scheduleBtn.apply {
-                    text = "Vous Y allez"
                     setBackgroundResource(R.drawable.disabled_btn_background)
                     setOnClickListener {
                         eventViewModel.removeScheduledEvent(event)
@@ -60,6 +63,7 @@ class SingleEventActivity : AppCompatActivity() {
 
                 binding.scheduleBtn.apply {
                     text = "J'Y vais"
+                    setBackgroundColor(resources.getColor(R.color.colorPrimary))
                     setOnClickListener {
                         eventViewModel.scheduleEvent(event)
                     }
