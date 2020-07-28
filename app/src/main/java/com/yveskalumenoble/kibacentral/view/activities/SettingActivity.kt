@@ -31,7 +31,7 @@ class SettingActivity : AppCompatActivity() {
                 val editor = sharedRef.edit()
                 editor.putBoolean(CONSTANT.noficationPrefrence,true)
                 editor.apply()
-                Toast.makeText(applicationContext,"Vos recevrez les notification pour cles evenemnt planifier",Toast.LENGTH_LONG)
+                Toast.makeText(applicationContext,"Vos recevrez les notification pour les evenements planifiés",Toast.LENGTH_LONG)
                     .show()
             } else {
 

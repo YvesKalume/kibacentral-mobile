@@ -12,7 +12,20 @@
             android:id="@+id/mainRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            tools:listitem="@layout/event_item"
        />
+
+        <TextView
+            android:id="@+id/nothingText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:gravity="center"
+            android:fontFamily="@font/open_sans"
+            android:text="Aucun Evenemnt Pour l'instant"
+            android:visibility="gone"/>
 
     </FrameLayout>
 </layout>

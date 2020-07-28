@@ -47,6 +47,7 @@
                     android:layout_marginTop="8dp"
                     android:text="@string/app_name"
                     android:textColor="#000"
+                    android:fontFamily="@font/open_sans"
                     android:textSize="30sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/logo"
@@ -61,6 +62,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
+                    android:fontFamily="@font/open_sans"
                     android:text="@string/app_version"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/logo"
@@ -76,6 +78,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:gravity="start"
+                    android:fontFamily="@font/open_sans"
                     android:text="@string/about"
                     android:textColor="#000000"
                     android:textSize="16sp"
@@ -108,10 +111,11 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
+                    android:fontFamily="@font/open_sans_light"
                     android:text="Contacts"
-                    android:textStyle="bold"
                     android:textColor="#000"
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -121,23 +125,26 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    android:fontFamily="@font/open_sans"
                     android:text="kibacentral@gmail.com"
                     android:textColor="#000"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/contactTitle" />
+
                 <TextView
                     android:id="@+id/contact2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="+243 97 49 39 405"
                     android:layout_margin="16dp"
+                    android:fontFamily="@font/open_sans"
+                    android:text="+243 97 49 39 405"
                     android:textColor="#000"
-                    app:layout_constraintTop_toBottomOf="@id/contact1"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/contact1" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

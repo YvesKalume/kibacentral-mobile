@@ -50,6 +50,9 @@ class AllEventsFragment : Fragment(), OnItemClickListener {
         val mAdapter = EventAdapter(this)
 
         eventViewModel.getEvents().observe(viewLifecycleOwner, Observer {
+            if (it.isEmpty()){
+                binding.nothingText.visibility = View.VISIBLE
+            }
             it?.let {
                 mAdapter.submitList(it)
             }

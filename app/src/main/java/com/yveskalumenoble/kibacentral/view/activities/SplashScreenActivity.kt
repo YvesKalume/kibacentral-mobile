@@ -24,7 +24,7 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if(firebaseAuth.currentUser != null){
-            Timer().schedule(1500){
+            Timer().schedule(500){
                 val intent = Intent(applicationContext,MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -35,7 +35,7 @@ class SplashScreenActivity : AppCompatActivity() {
         firebaseAuth.signInAnonymously()
             .addOnCompleteListener(this) {
                 if (it.isSuccessful){
-                    Timer().schedule(1500){
+                    Timer().schedule(500){
                         val intent = Intent(applicationContext,MainActivity::class.java)
                         startActivity(intent)
                         finish()

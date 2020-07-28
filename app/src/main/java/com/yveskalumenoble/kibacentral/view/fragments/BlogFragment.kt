@@ -39,7 +39,14 @@ class BlogFragment : Fragment(),OnItemClickListener {
         val adapter = BlogAdapter(this)
 
         blogViewModel.blogs.observe(viewLifecycleOwner, Observer {
-            adapter.submitList(it)
+            if (it.isEmpty()){
+                binding.nothingText.visibility = View.VISIBLE
+            }
+
+            it.let {
+                adapter.submitList(it)
+            }
+
         })
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

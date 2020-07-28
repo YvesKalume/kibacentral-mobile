@@ -57,6 +57,7 @@
                     android:textSize="20sp"
                     android:textColor="#000"
                     android:textStyle="bold"
+                    android:fontFamily="@font/open_sans"
                     android:layout_marginTop="8dp" />
                 <View
                     android:layout_width="match_parent"
@@ -68,6 +69,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="16sp"
+                    android:fontFamily="@font/open_sans"
                     app:fromHtml="@{blog.content}"/>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
