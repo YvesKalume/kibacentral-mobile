@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun setUpBottomBar(navController: NavController){
+    private fun setUpBottomBar(navController: NavController){
         binding.bottomNavigation.let {
             NavigationUI.setupWithNavController(it,navController)
         }
