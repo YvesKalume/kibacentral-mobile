@@ -24,6 +24,7 @@ import com.yveskalumenoble.kibacentral.model.UserEvent
 import com.yveskalumenoble.kibacentral.receiver.EventReceiver
 import com.yveskalumenoble.kibacentral.util.CONSTANT
 import com.yveskalumenoble.kibacentral.viewmodel.EventViewModel
+import java.util.*
 
 class SingleEventActivity : AppCompatActivity() {
 
@@ -52,6 +53,8 @@ class SingleEventActivity : AppCompatActivity() {
 
         alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
+        createNotificationChannel()
+
         eventViewModel.isScheduled(event!!).observe(this, Observer {
             if (it){
                 eventViewModel.getParticipants(event).observe(this, Observer {
@@ -72,6 +75,7 @@ class SingleEventActivity : AppCompatActivity() {
                     setBackgroundColor(resources.getColor(R.color.colorPrimary))
                     setOnClickListener {
                         eventViewModel.scheduleEvent(event)
+                        setAlarm(event)
                     }
                 }
             }
@@ -81,5 +85,29 @@ class SingleEventActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    private fun setAlarm(event: Event){
+        val intent = Intent(this, EventReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(this,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val day = event.datetime!!.day
+        val month = event.datetime!!.month
+        val year = event.datetime!!.year
+        val date = Date(year,month,day,0,0)
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP,date.time,pendingIntent)
+    }
+
+    private fun createNotificationChannel(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val notificationChannel = NotificationChannel(
+                CONSTANT.notificationChanelId,"Kibacentral Notification Channel"
+                , NotificationManager.IMPORTANCE_HIGH)
+            notificationChannel.enableVibration(true)
+            notificationChannel.description = "Event Notification"
+            val notificationManager = getSystemService(NotificationManager::class.java) as NotificationManager
+            notificationManager.createNotificationChannel(notificationChannel)
+        }
     }
 }

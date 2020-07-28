@@ -36,8 +36,6 @@ class AllEventsFragment : Fragment(), OnItemClickListener {
 
     private lateinit var eventViewModel: EventViewModel
 
-    private lateinit var alarmManager: AlarmManager
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,19 +46,12 @@ class AllEventsFragment : Fragment(), OnItemClickListener {
 
         eventViewModel = ViewModelProviders.of(this).get(EventViewModel::class.java)
 
-        alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-        createNotificationChannel()
 
         val mAdapter = EventAdapter(this)
 
         eventViewModel.getEvents().observe(viewLifecycleOwner, Observer {
             it?.let {
                 mAdapter.submitList(it)
-            }
-
-            it.forEach { event ->
-               setAlarm(event)
             }
         })
 
@@ -79,29 +70,5 @@ class AllEventsFragment : Fragment(), OnItemClickListener {
 
     override fun onBlogItemClik(blog: Blog) {
 
-    }
-
-    private fun setAlarm(event: Event){
-        val intent = Intent(context, EventReceiver::class.java)
-        val pendingIntent = PendingIntent.getBroadcast(context,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
-
-        val day = event.datetime!!.day
-        val month = event.datetime!!.month
-        val year = event.datetime!!.year
-        val date = Date(year,month,day,0,0)
-
-        alarmManager.set(AlarmManager.RTC_WAKEUP,date.time,pendingIntent)
-    }
-
-    private fun createNotificationChannel(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            val notificationChannel = NotificationChannel(
-                CONSTANT.notificationChanelId,"Kibacentral Notification Channel"
-                , NotificationManager.IMPORTANCE_HIGH)
-            notificationChannel.enableVibration(true)
-            notificationChannel.description = "Event Notification"
-            val notificationManager = requireActivity().getSystemService(NotificationManager::class.java) as NotificationManager
-            notificationManager.createNotificationChannel(notificationChannel)
-        }
     }
 }
