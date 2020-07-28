@@ -24,7 +24,7 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         if(firebaseAuth.currentUser != null){
-            Timer().schedule(500){
+            Timer().schedule(1000){
                 val intent = Intent(applicationContext,MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -35,7 +35,7 @@ class SplashScreenActivity : AppCompatActivity() {
         firebaseAuth.signInAnonymously()
             .addOnCompleteListener(this) {
                 if (it.isSuccessful){
-                    Timer().schedule(500){
+                    Timer().schedule(1000){
                         val intent = Intent(applicationContext,MainActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -49,11 +49,12 @@ class SplashScreenActivity : AppCompatActivity() {
                     builder.setMessage("Une erreur est survenue lors de l'authentification. " +
                             "Veuillez verifier votre connexion internet et réessayez")
                     builder.setPositiveButton("Réeassayer",DialogInterface.OnClickListener { dialogInterface, i ->
-                        Toast.makeText(applicationContext,"Try again",Toast.LENGTH_SHORT).show()
+                        finish()
+                        startActivity(intent)
                     })
 
-                    builder.setNegativeButton("Fermer",DialogInterface.OnClickListener { dialogInterface, i ->
-                        Toast.makeText(applicationContext,"Quitter",Toast.LENGTH_SHORT).show()
+                    builder.setNegativeButton("Quitter",DialogInterface.OnClickListener { dialogInterface, i ->
+                        finish()
                     })
                     builder.show()
                 }
