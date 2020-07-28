@@ -20,7 +20,8 @@
         <activity android:name=".view.activities.LoginActivity" />
         <activity android:name=".view.activities.SingleEventActivity" />
         <activity android:name=".view.activities.SettingActivity" />
-        <activity android:name=".view.activities.MainActivity"/>
+        <activity android:name=".view.activities.MainActivity"
+            android:noHistory="true"/>
 
         <receiver android:name=".receiver.EventReceiver"/>
         <meta-data
