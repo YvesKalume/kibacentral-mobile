@@ -39,6 +39,12 @@ class SingleEventActivity : AppCompatActivity() {
 
         eventViewModel = ViewModelProviders.of(this).get(EventViewModel::class.java)
 
+        setSupportActionBar(binding.toolbar)
+        val actionbar = supportActionBar
+        actionbar!!.setHomeAsUpIndicator(R.drawable.ic_chevron_left)
+        actionbar.setDisplayShowTitleEnabled(false)
+        actionbar.setDisplayHomeAsUpEnabled(true)
+
         val bundle = intent.extras
         val event : Event? = bundle?.getParcelable("event")
 
@@ -70,5 +76,10 @@ class SingleEventActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

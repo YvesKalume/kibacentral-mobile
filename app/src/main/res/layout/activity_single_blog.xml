@@ -17,28 +17,28 @@
             android:layout_height="300dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
             <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapseToolbarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_scrollFlags="exitUntilCollapsed|scroll"
+                app:layout_scrollFlags="scroll"
                 app:contentScrim="@color/colorPrimary"
-                app:title="@{blog.title}"
                 app:expandedTitleMarginStart="8dp"
                 app:expandedTitleMarginEnd="8dp">
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:layout_collapseMode="pin"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"/>
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/image1"
                     android:scaleType="centerCrop"
                     android:theme="@style/ThemeOverlay.AppCompat.Light"
-                    app:layout_collapseMode="pin"
+                    app:layout_collapseMode="none"
                     app:bindImage="@{blog.imageUri}"
                     />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    app:layout_collapseMode="pin"/>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
         <androidx.core.widget.NestedScrollView
@@ -48,7 +48,22 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{blog.title}"
+                    android:textSize="20sp"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:background="#56CAC9C9"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

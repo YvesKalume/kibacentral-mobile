@@ -6,20 +6,20 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.activities.SettingActivity"
-        android:background="#EDEDED">
+        android:background="#EDEDED"
+        tools:context=".view.activities.SettingActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            app:title="@string/app_name"
-            android:elevation="5dp"
-            app:titleTextColor="#000"
+            android:layout_height="wrap_content"
             android:background="#fff"
-            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="5dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_height="wrap_content" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@string/app_name"
+            app:titleTextColor="#000" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
@@ -36,9 +36,9 @@
                 android:id="@+id/notificationSwitch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="15sp"
                 android:layout_margin="5dp"
-                android:text="Notifications" />
+                android:text="Notifications"
+                android:textSize="15sp" />
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
