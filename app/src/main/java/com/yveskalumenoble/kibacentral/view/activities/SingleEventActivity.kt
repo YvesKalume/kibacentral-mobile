@@ -90,7 +90,7 @@ class SingleEventActivity : AppCompatActivity() {
     private fun setAlarm(event: Event){
         val intent = Intent(this, EventReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(this,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        val time = event.datetime!!.time - 3600
+        val time = event.datetime!!.time - 3600000
         alarmManager.set(AlarmManager.RTC_WAKEUP,time,pendingIntent)
     }
 
