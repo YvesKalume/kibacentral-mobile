@@ -34,15 +34,13 @@ class EventViewModel : ViewModel() {
                 }
 
                 events.value = querySnapshot.toObjects(Event::class.java)
+                    .filter {
 
-                /*.filter {
+                        val limitTime = System.currentTimeMillis() + 3600
+                        val eventTime = it.datetime!!.time
+                        return@filter limitTime <= eventTime
 
-                    val currentTime = System.currentTimeMillis()
-                    val eventTime = it.datetime!!.time
-
-                    return@filter currentTime <= eventTime
-
-                }*/
+                }
             }
         return events
     }

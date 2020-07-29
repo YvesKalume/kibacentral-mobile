@@ -20,7 +20,7 @@ class EventReceiver : BroadcastReceiver(){
         val canNotify = preference.getBoolean(CONSTANT.noficationPrefrence,false)
 
         if (canNotify){
-            notificationManager.sendNotification("Certains evenements sont prévus pour aujourd'huis",context)
+            notificationManager.sendNotification("Certains événements sont prévus pour aujourd'hui",context)
         }
     }
 

@@ -90,13 +90,8 @@ class SingleEventActivity : AppCompatActivity() {
     private fun setAlarm(event: Event){
         val intent = Intent(this, EventReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(this,0,intent, PendingIntent.FLAG_UPDATE_CURRENT)
-
-        val day = event.datetime!!.day
-        val month = event.datetime!!.month
-        val year = event.datetime!!.year
-        val date = Date(year,month,day,0,0)
-
-        alarmManager.set(AlarmManager.RTC_WAKEUP,date.time,pendingIntent)
+        val time = event.datetime!!.time - 3600
+        alarmManager.set(AlarmManager.RTC_WAKEUP,time,pendingIntent)
     }
 
     private fun createNotificationChannel(){

@@ -60,4 +60,9 @@ class SplashScreenActivity : AppCompatActivity() {
                 }
             }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
 }
