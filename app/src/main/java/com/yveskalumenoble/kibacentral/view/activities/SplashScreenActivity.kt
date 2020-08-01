@@ -30,10 +30,14 @@ class SplashScreenActivity : AppCompatActivity() {
                 finish()
             }
         }
+        else {
+            signInAnonymously()
+        }
+    }
 
-
+    fun signInAnonymously (){
         firebaseAuth.signInAnonymously()
-            .addOnCompleteListener(this) {
+            .addOnCompleteListener{
                 if (it.isSuccessful){
                     Timer().schedule(1000){
                         val intent = Intent(applicationContext,MainActivity::class.java)
