@@ -49,12 +49,12 @@ class SplashScreenActivity : AppCompatActivity() {
 
                 else {
                     val builder = AlertDialog.Builder(this)
+                    builder.setCancelable(false)
                     builder.setTitle("Erreur d'auhentification")
                     builder.setMessage("Une erreur est survenue lors de l'authentification. " +
-                            "Veuillez verifier votre connexion internet et réessayez")
+                            "Veuillez vérifier votre connexion internet et réessayez")
                     builder.setPositiveButton("Réeassayer",DialogInterface.OnClickListener { dialogInterface, i ->
-                        finish()
-                        startActivity(intent)
+                        this.signInAnonymously()
                     })
 
                     builder.setNegativeButton("Quitter",DialogInterface.OnClickListener { dialogInterface, i ->
